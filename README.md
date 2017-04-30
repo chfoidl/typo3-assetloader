@@ -1,12 +1,12 @@
 # TYPO3 Extension ``assetloader``
 
-[![Build Status](https://travis-ci.org/Sethorax/typo3-assetsloader.svg?branch=master)](https://travis-ci.org/Sethorax/typo3-assetsloader)
+[![Build Status](https://travis-ci.org/Sethorax/typo3-assetloader.svg?branch=master)](https://travis-ci.org/Sethorax/typo3-assetloader)
 [![StyleCI](https://styleci.io/repos/89864781/shield?branch=master)](https://styleci.io/repos/89864781)
-[![Latest Stable Version](https://poser.pugx.org/sethorax/typo3-assetsloader/v/stable)](https://packagist.org/packages/sethorax/typo3-assetsloader)
-[![License](https://poser.pugx.org/sethorax/typo3-assetsloader/license)](https://packagist.org/packages/sethorax/typo3-assetsloader)
+[![Latest Stable Version](https://poser.pugx.org/sethorax/typo3-assetloader/v/stable)](https://packagist.org/packages/sethorax/typo3-assetsloader)
+[![License](https://poser.pugx.org/sethorax/typo3-assetloader/license)](https://packagist.org/packages/sethorax/typo3-assetsloader)
 
 > This extension enables you to conveniently add inline CSS and JS, deferred CSS and JS and Webfonts to your project.  
-> The goal of this extension is to improve the overall page speed by how those assets are loaded.
+> The goal of this extension is to improve the overall pagespeed by how those assets are loaded.
 
 ### Features
 
