@@ -1,6 +1,6 @@
 <?php
 
-namespace Sethorax\Assetsloader\Page;
+namespace Sethorax\Assetloader\Page;
 
 class WebfontLoader
 {

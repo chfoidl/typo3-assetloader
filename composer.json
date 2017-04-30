@@ -1,5 +1,5 @@
 {
-  "name": "sethorax/typo3-assetsloader",
+  "name": "sethorax/typo3-assetloader",
   "description": "Pagespeed friendly asset loader for TYPO3 CMS",
   "type": "typo3-cms-extension",
   "version": "0.9.0",
@@ -15,8 +15,8 @@
     "pagespeed"
   ],
   "replace": {
-    "assetsloader": "self.version",
-    "typo3-ter/assetsloader": "self.version"
+    "assetloader": "self.version",
+    "typo3-ter/assetloader": "self.version"
   },
   "authors": [
     {
@@ -34,12 +34,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Sethorax\\Assetsloader\\": "Classes"
+      "Sethorax\\Assetloader\\": "Classes"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Sethorax\\Assetsloader\\Tests\\": "Tests/",
+      "Sethorax\\Assetloader\\Tests\\": "Tests/",
       "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/"
     }
   },
@@ -50,7 +50,7 @@
   "scripts": {
     "post-autoload-dump": [
       "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/assetsloader ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/assetsloader"
+      "[ -L .Build/Web/typo3conf/ext/assetloader ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/assetloader"
     ],
     "test": "export TYPO3_PATH_WEB=`pwd`/.Build/Web; .Build/bin/phpunit --colors -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/"
   },

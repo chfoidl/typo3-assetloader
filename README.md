@@ -1,4 +1,4 @@
-# TYPO3 Extension ``assetsloader``
+# TYPO3 Extension ``assetloader``
 
 [![Build Status](https://travis-ci.org/Sethorax/typo3-assetsloader.svg?branch=master)](https://travis-ci.org/Sethorax/typo3-assetsloader)
 [![StyleCI](https://styleci.io/repos/89864781/shield?branch=master)](https://styleci.io/repos/89864781)

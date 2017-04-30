@@ -1,6 +1,6 @@
 <?php
 
-namespace Sethorax\Assetsloader\Utility;
+namespace Sethorax\Assetloader\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sethorax\Assetsloader\Utility;
+namespace Sethorax\Assetloader\Utility;
 
 class StringUtility
 {

@@ -1,4 +1,4 @@
-plugin.tx_assetsloader {
+plugin.tx_assetloader {
     concatenateCSS = 0
     concatenateJS = 0
     minifyCSS = 0

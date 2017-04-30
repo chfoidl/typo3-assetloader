@@ -1,6 +1,6 @@
 <?php
 
-namespace Sethorax\Assetsloader\Utility;
+namespace Sethorax\Assetloader\Utility;
 
 use MatthiasMullie\Minify;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -106,7 +106,7 @@ class MinificationUtility
      */
     public function minifyToFile()
     {
-        $tempDir = GeneralUtility::getFileAbsFileName('typo3temp/assetsloader');
+        $tempDir = GeneralUtility::getFileAbsFileName('typo3temp/assetloader');
 
         if (!file_exists($tempDir)) {
             shell_exec('mkdir -p ' . $tempDir);

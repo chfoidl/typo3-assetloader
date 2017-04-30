@@ -1,10 +1,10 @@
 <?php
 
-namespace Sethorax\Assetsloader\Tests\Unit;
+namespace Sethorax\Assetloader\Tests\Unit;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
-use Sethorax\Assetsloader\Hook\RenderPostProcessorHook;
-use Sethorax\Assetsloader\Utility\TypoScriptUtility;
+use Sethorax\Assetloader\Hook\RenderPostProcessorHook;
+use Sethorax\Assetloader\Utility\TypoScriptUtility;
 
 class RenderPostProcessorHookTest extends UnitTestCase
 {
@@ -73,7 +73,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         ]);
 
         $this->assertEquals(
-            '<style assetsloader-' . $key . '="">' . $value . '</style>',
+            '<style assetloader-' . $key . '="">' . $value . '</style>',
             $postHookParams['headerData'][0]
         );
     }
@@ -97,8 +97,8 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $this->assertEquals(
             [
-                '<style assetsloader-' . $key1 . '="">' . $value1 . '</style>',
-                '<style assetsloader-' . $key2 . '="">' . $value2 . '</style>'
+                '<style assetloader-' . $key1 . '="">' . $value1 . '</style>',
+                '<style assetloader-' . $key2 . '="">' . $value2 . '</style>'
             ],
             $postHookParams['headerData']
         );
@@ -120,7 +120,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         ]);
 
         $this->assertEquals(
-            '<style assetsloader-' . $key . '="">body{background-color:white}</style>',
+            '<style assetloader-' . $key . '="">body{background-color:white}</style>',
             trim($postHookParams['headerData'][0])
         );
     }
@@ -141,7 +141,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $this->assertEquals(
             $postHookParams['headerData'][0],
-            '<script assetsloader-' . $key . '="" type="text/javascript">' . $value . '</script>'
+            '<script assetloader-' . $key . '="" type="text/javascript">' . $value . '</script>'
         );
     }
 
@@ -162,7 +162,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $this->assertEquals(
             $postHookParams['headerData'][0],
-            '<script assetsloader-' . $key . '="" type="text/javascript">console.log("Hello World!")</script>'
+            '<script assetloader-' . $key . '="" type="text/javascript">console.log("Hello World!")</script>'
         );
     }
 
@@ -181,7 +181,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         ]);
 
         $this->assertEquals(
-            '<style assetsloader-' . $key . '="">' . $value . '</style>',
+            '<style assetloader-' . $key . '="">' . $value . '</style>',
             $postHookParams['footerData'][0]
         );
     }
@@ -205,8 +205,8 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $this->assertEquals(
             [
-                '<style assetsloader-' . $key1 . '="">' . $value1 . '</style>',
-                '<style assetsloader-' . $key2 . '="">' . $value2 . '</style>'
+                '<style assetloader-' . $key1 . '="">' . $value1 . '</style>',
+                '<style assetloader-' . $key2 . '="">' . $value2 . '</style>'
             ],
             $postHookParams['footerData']
         );
@@ -228,7 +228,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         ]);
 
         $this->assertEquals(
-            '<style assetsloader-' . $key . '="">body{background-color:white}</style>',
+            '<style assetloader-' . $key . '="">body{background-color:white}</style>',
             trim($postHookParams['footerData'][0])
         );
     }
@@ -249,7 +249,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $this->assertEquals(
             $postHookParams['footerData'][0],
-            '<script assetsloader-' . $key . '="" type="text/javascript">' . $value . '</script>'
+            '<script assetloader-' . $key . '="" type="text/javascript">' . $value . '</script>'
         );
     }
 
@@ -270,7 +270,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $this->assertEquals(
             $postHookParams['footerData'][0],
-            '<script assetsloader-' . $key . '="" type="text/javascript">console.log("Hello World!")</script>'
+            '<script assetloader-' . $key . '="" type="text/javascript">console.log("Hello World!")</script>'
         );
     }
 
@@ -348,7 +348,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $filecontents = file_get_contents(__DIR__ . '/../../.Build/Web/typo3temp/' . $file);
 
-        $this->assertContains('assetsloader-concatenated', $loadingScript);
+        $this->assertContains('assetloader-concatenated', $loadingScript);
         $this->assertContains('attachEvent', $loadingScript);
         $this->assertContains('body{display:block}body{display:none}', $filecontents);
     }
@@ -385,7 +385,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         $filecontents = file_get_contents(__DIR__ . '/../../.Build/Web/typo3temp/' . $file);
 
         $this->assertCount(2, $postHookParams['footerData']);
-        $this->assertContains('assetsloader-concatenated', $loadingScript);
+        $this->assertContains('assetloader-concatenated', $loadingScript);
         $this->assertContains('attachEvent', $loadingScript);
         $this->assertContains('body{display:block}body{display:none}', $filecontents);
         $this->assertContains($key3, $postHookParams['footerData'][1]);
@@ -463,7 +463,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $filecontents = file_get_contents(__DIR__ . '/../../.Build/Web/typo3temp/' . $file);
 
-        $this->assertContains('assetsloader-concatenated', $loadingScript);
+        $this->assertContains('assetloader-concatenated', $loadingScript);
         $this->assertContains('(function(){console.log(\'Hello World!\')})();var test=1;console.log(test)', $filecontents);
     }
 
@@ -499,7 +499,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         $filecontents = file_get_contents(__DIR__ . '/../../.Build/Web/typo3temp/' . $file);
 
         $this->assertCount(2, $postHookParams['footerData']);
-        $this->assertContains('assetsloader-concatenated', $loadingScript);
+        $this->assertContains('assetloader-concatenated', $loadingScript);
         $this->assertContains('(function(){console.log(\'Hello World!\')})();var test=1;console.log(test)', $filecontents);
         $this->assertContains($key3, $postHookParams['footerData'][1]);
     }
@@ -521,7 +521,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         ]));
 
         $this->assertContains($value, $postHookParams['footerData'][0]);
-        $this->assertContains('assetsloader-webfontloader', $postHookParams['footerData'][0]);
+        $this->assertContains('assetloader-webfontloader', $postHookParams['footerData'][0]);
         $this->assertNotContains('custom', $postHookParams['footerData'][0]);
         $this->assertNotContains('urls', $postHookParams['footerData'][0]);
     }
@@ -550,7 +550,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
 
         $this->assertContains($family, $postHookParams['footerData'][0]);
         $this->assertContains($url, $postHookParams['footerData'][0]);
-        $this->assertContains('assetsloader-webfontloader', $postHookParams['footerData'][0]);
+        $this->assertContains('assetloader-webfontloader', $postHookParams['footerData'][0]);
         $this->assertNotContains('google ', $postHookParams['footerData'][0]);
     }
 
@@ -584,7 +584,7 @@ class RenderPostProcessorHookTest extends UnitTestCase
         $this->assertContains($familyCustom, $postHookParams['footerData'][0]);
         $this->assertContains($urlCustom, $postHookParams['footerData'][0]);
         $this->assertContains($valueGoogle, $postHookParams['footerData'][0]);
-        $this->assertContains('assetsloader-webfontloader', $postHookParams['footerData'][0]);
+        $this->assertContains('assetloader-webfontloader', $postHookParams['footerData'][0]);
         $this->assertContains('google', $postHookParams['footerData'][0]);
         $this->assertContains('custom', $postHookParams['footerData'][0]);
     }

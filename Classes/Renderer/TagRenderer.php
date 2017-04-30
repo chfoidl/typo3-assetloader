@@ -1,6 +1,6 @@
 <?php
 
-namespace Sethorax\Assetsloader\Renderer;
+namespace Sethorax\Assetloader\Renderer;
 
 class TagRenderer
 {

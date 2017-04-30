@@ -1,13 +1,13 @@
 <?php
 
-namespace Sethorax\Assetsloader\Hook;
+namespace Sethorax\Assetloader\Hook;
 
-use Sethorax\Assetsloader\Page\WebfontLoader;
-use Sethorax\Assetsloader\Renderer\TagRenderer;
-use Sethorax\Assetsloader\Utility\FileUtility;
-use Sethorax\Assetsloader\Utility\MinificationUtility;
-use Sethorax\Assetsloader\Utility\StringUtility;
-use Sethorax\Assetsloader\Utility\TypoScriptUtility;
+use Sethorax\Assetloader\Page\WebfontLoader;
+use Sethorax\Assetloader\Renderer\TagRenderer;
+use Sethorax\Assetloader\Utility\FileUtility;
+use Sethorax\Assetloader\Utility\MinificationUtility;
+use Sethorax\Assetloader\Utility\StringUtility;
+use Sethorax\Assetloader\Utility\TypoScriptUtility;
 
 class RenderPostProcessorHook
 {
@@ -25,7 +25,7 @@ class RenderPostProcessorHook
     protected $params;
 
     /**
-     * @var \Sethorax\Assetsloader\Page\WebfontLoader
+     * @var \Sethorax\assetloader\Page\WebfontLoader
      */
     protected $webfontLoader;
 
@@ -38,7 +38,7 @@ class RenderPostProcessorHook
             $typoscriptUtility = new TypoScriptUtility();
         }
 
-        $this->settings = $typoscriptUtility->getPluginSetup('tx_assetsloader');
+        $this->settings = $typoscriptUtility->getPluginSetup('tx_assetloader');
     }
 
     /**
@@ -128,7 +128,7 @@ class RenderPostProcessorHook
                     $this->params[$pos][] =
                         trim($tag->create('style')
                             ->setContent($css)
-                            ->addAttribute('assetsloader-' . $key)
+                            ->addAttribute('assetloader-' . $key)
                             ->renderToString());
                 }
             }
@@ -164,7 +164,7 @@ class RenderPostProcessorHook
                         $this->params[$pos][] =
                             trim($tag->create('script')
                                 ->setContent($js)
-                                ->addAttribute('assetsloader-' . $key)
+                                ->addAttribute('assetloader-' . $key)
                                 ->addAttribute('type', 'text/javascript')
                                 ->renderToString());
                     }
@@ -198,7 +198,7 @@ class RenderPostProcessorHook
                 $this->params[self::POSITION_FOOTER][] =
                     $tag->create('script')
                         ->setContent($scriptContent)
-                        ->addAttribute('assetsloader-' . $key)
+                        ->addAttribute('assetloader-' . $key)
                         ->addAttribute('type', 'text/javascript')
                         ->renderToString();
             }
@@ -220,7 +220,7 @@ class RenderPostProcessorHook
                 $tag = new TagRenderer();
                 $this->params[self::POSITION_FOOTER][] =
                     $tag->create('script')
-                        ->addAttribute('assetsloader-' . $key)
+                        ->addAttribute('assetloader-' . $key)
                         ->addAttribute('src', $value)
                         ->addAttribute('type', 'text/javascript')
                         ->addAttribute('async')
@@ -289,7 +289,7 @@ class RenderPostProcessorHook
             $this->params[self::POSITION_FOOTER][] =
                 $tag->create('script')
                     ->setContent($minifier->minifyToString())
-                    ->addAttribute('assetsloader-webfontloader')
+                    ->addAttribute('assetloader-webfontloader')
                     ->addAttribute('type', 'text/javascript')
                     ->renderToString();
         }

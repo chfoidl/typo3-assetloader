@@ -1,13 +1,13 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Assets Loader',
+    'title' => 'Assetloader',
     'description' => 'Pagespeed friendly asset loader.',
     'category' => 'frontend',
     'version' => '0.9.0',
     'state' => 'beta',
     'uploadfolder' => 0,
-    'createDirs' => 'typo3temp/assetsloader',
+    'createDirs' => 'typo3temp/assetloader',
     'modify_tables' => '',
     'clearCacheOnLoad' => 1,
     'author' => 'Sethorax',
