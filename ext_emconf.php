@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Assets Loader',
-    'description' => 'Loads CSS and JS asynchronously to increase page performance.',
+    'description' => 'Pagespeed friendly asset loader.',
     'category' => 'frontend',
     'version' => '0.9.0',
     'state' => 'beta',
