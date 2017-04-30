@@ -4,7 +4,6 @@ namespace Sethorax\Assetsloader\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-
 class FileUtility
 {
     /**
@@ -20,7 +19,7 @@ class FileUtility
         if (file_exists($absPath)) {
             return file_get_contents($absPath);
         } else {
-            return NULL;
+            return null;
         }
     }
 }

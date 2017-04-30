@@ -2,7 +2,6 @@
 
 namespace Sethorax\Assetsloader\Renderer;
 
-
 class TagRenderer
 {
     /**
@@ -14,7 +13,6 @@ class TagRenderer
      * @var \DOMElement
      */
     protected $tag;
-
 
     /**
      * Creates the DOMElement.

@@ -6,7 +6,6 @@ use MatthiasMullie\Minify;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
 
-
 class MinificationUtility
 {
     const MODE_JS = 'js';
@@ -27,7 +26,6 @@ class MinificationUtility
      */
     protected $minifier;
 
-
     /**
      * Loads the all dependencies if class has not been loaded yet.
      */
@@ -44,7 +42,8 @@ class MinificationUtility
      * @param string $mode
      * @return $this
      */
-    public function setMode($mode) {
+    public function setMode($mode)
+    {
         switch (strtolower($mode)) {
             case 'js':
                 $this->mode = self::MODE_JS;
@@ -66,7 +65,8 @@ class MinificationUtility
      * @param string $content
      * @return $this
      */
-    public function addContent($content) {
+    public function addContent($content)
+    {
         $this->content .= $content;
         $this->minifier->add($content);
 
@@ -80,7 +80,8 @@ class MinificationUtility
      * @param string $file
      * @return $this
      */
-    public function addFile($file) {
+    public function addFile($file)
+    {
         $this->content .= $file . filemtime(GeneralUtility::getFileAbsFileName($file));
         $this->minifier->add(GeneralUtility::getFileAbsFileName($file));
 
@@ -92,7 +93,8 @@ class MinificationUtility
      *
      * @return string
      */
-    public function minifyToString() {
+    public function minifyToString()
+    {
         return $this->minifier->minify();
     }
 
@@ -102,7 +104,8 @@ class MinificationUtility
      *
      * @return NULL|string
      */
-    public function minifyToFile() {
+    public function minifyToFile()
+    {
         $tempDir = GeneralUtility::getFileAbsFileName('typo3temp/assetsloader');
 
         if (!file_exists($tempDir)) {
@@ -142,4 +145,3 @@ class MinificationUtility
         require_once $depPath . '/path-converter/src/Converter.php';
     }
 }
-
