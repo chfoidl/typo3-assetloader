@@ -29,7 +29,7 @@
     "typo3/cms-core": "^7.6.10 || >=8.7.0 <9"
   },
   "require-dev": {
-    "typo3/testing-framework": "^1.0",
+    "phpunit/phpunit": "~4.8.0",
     "nimut/testing-framework": "^1.0"
   },
   "autoload": {
