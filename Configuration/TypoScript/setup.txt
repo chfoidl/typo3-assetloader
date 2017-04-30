@@ -1,0 +1,22 @@
+plugin.tx_assetsloader {
+    enable = 0
+
+    concatenateCSS = 0
+    concatenateJS = 0
+    minifyCSS = 0
+    minifyJS = 0
+
+    settings {
+        deferredCssLoadingScript = function ###SCRIPTNAME###() { var e = document.createElement("link"); e.rel = "stylesheet"; e.type = "text/css"; e.href = "###CSSFILE###"; document.body.appendChild(e);} if (window.addEventListener) window.addEventListener("load", ###SCRIPTNAME### , false); else if (window.attachEvent) window.attachEvent("onload", ###SCRIPTNAME###); else window.onload = ###SCRIPTNAME###;
+        WFLLoadingScript = (function(d) { var wf = d.createElement('script'), s = d.scripts[0]; wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'; wf.async = true; s.parentNode.insertBefore(wf, s); })(document);
+    }
+
+    #includeCSSInline {}
+    #includeCSSDeferred {}
+    #includeJSDeferred {}
+
+    #fontloader {
+        #includeGoogleFonts {}
+        #includeCustomFonts {}
+    #}
+}
