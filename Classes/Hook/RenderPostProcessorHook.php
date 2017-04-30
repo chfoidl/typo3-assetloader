@@ -2,12 +2,12 @@
 
 namespace Sethorax\Assetsloader\Hook;
 
-use Sethorax\Assetsloader\Renderer\TagRenderer;
 use Sethorax\Assetsloader\Page\WebfontLoader;
-use Sethorax\Assetsloader\Utility\TypoScriptUtility;
-use Sethorax\Assetsloader\Utility\MinificationUtility;
+use Sethorax\Assetsloader\Renderer\TagRenderer;
 use Sethorax\Assetsloader\Utility\FileUtility;
+use Sethorax\Assetsloader\Utility\MinificationUtility;
 use Sethorax\Assetsloader\Utility\StringUtility;
+use Sethorax\Assetsloader\Utility\TypoScriptUtility;
 
 class RenderPostProcessorHook
 {
@@ -29,11 +29,10 @@ class RenderPostProcessorHook
      */
     protected $webfontLoader;
 
-
     /**
      * @param TypoScriptUtility|NULL $typoscriptUtility
      */
-    public function __construct(TypoScriptUtility $typoscriptUtility = NULL)
+    public function __construct(TypoScriptUtility $typoscriptUtility = null)
     {
         if (!isset($typoscriptUtility)) {
             $typoscriptUtility = new TypoScriptUtility();
@@ -63,7 +62,6 @@ class RenderPostProcessorHook
 
         return $this->params;
     }
-
 
     /**
      * Includes inline css in the head.
@@ -124,7 +122,6 @@ class RenderPostProcessorHook
                 } else {
                     $css = $rawCss;
                 }
-
 
                 if (!empty($css)) {
                     $tag = new TagRenderer();
@@ -295,7 +292,6 @@ class RenderPostProcessorHook
                     ->addAttribute('assetsloader-webfontloader')
                     ->addAttribute('type', 'text/javascript')
                     ->renderToString();
-
         }
     }
 

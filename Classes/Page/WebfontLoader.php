@@ -2,7 +2,6 @@
 
 namespace Sethorax\Assetsloader\Page;
 
-
 class WebfontLoader
 {
     /**

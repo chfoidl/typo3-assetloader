@@ -2,7 +2,6 @@
 
 namespace Sethorax\Assetsloader\Utility;
 
-
 class StringUtility
 {
     /**
@@ -33,7 +32,7 @@ class StringUtility
      */
     public static function createCharacterOnlyHash($string)
     {
-        $hash = hash('crc32', $string, FALSE);
+        $hash = hash('crc32', $string, false);
 
         $hash = str_replace('0', 'a', $hash);
         $hash = str_replace('1', 'b', $hash);

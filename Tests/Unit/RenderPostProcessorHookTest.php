@@ -17,8 +17,8 @@ class RenderPostProcessorHookTest extends UnitTestCase
     public function setUp()
     {
         $this->params = [
-            "headerData" => [],
-            "footerData" => []
+            'headerData' => [],
+            'footerData' => []
         ];
 
         $this->defaultPluginConfig = [
@@ -588,7 +588,6 @@ class RenderPostProcessorHookTest extends UnitTestCase
         $this->assertContains('google', $postHookParams['footerData'][0]);
         $this->assertContains('custom', $postHookParams['footerData'][0]);
     }
-
 
     protected function runRenderPostProcessorHook($pluginSetup)
     {
