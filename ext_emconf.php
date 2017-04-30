@@ -14,7 +14,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'info@sethorax.com',
     'constraints' => [
         'depends' => [
-            'typo3' => '7.6.10-8.7.99',
+            'typo3' => '7.6.0-8.7.99',
         ]
     ]
 ];
