@@ -3,7 +3,6 @@
 namespace Sethorax\Assetloader\Hook;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Sethorax\Assetloader\Hook\RenderPostProcessorHook;
 
 class ClearCachePostProcHook
 {
