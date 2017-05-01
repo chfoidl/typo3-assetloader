@@ -322,33 +322,35 @@ class RenderPostProcessorHook
         $processQueue = [];
         $processedFiles = [];
 
-        foreach ($settings as $key => $value) {
-            if (TypoScriptUtility::isDotlessKey($key)) {
-                $additionalConfiguration = $settings[$key . '.'];
+        if (isset($settings)) {
+            foreach ($settings as $key => $value) {
+                if (TypoScriptUtility::isDotlessKey($key)) {
+                    $additionalConfiguration = $settings[$key . '.'];
 
-                if ($concatenationSetting === '1' && $additionalConfiguration['excludeFromConcatenation'] !== '1') {
-                    $processQueue['concatenated'][$key] = $value;
-                } else {
-                    $processQueue[$key][$key] = $value;
+                    if ($concatenationSetting === '1' && $additionalConfiguration['excludeFromConcatenation'] !== '1') {
+                        $processQueue['concatenated'][$key] = $value;
+                    } else {
+                        $processQueue[$key][$key] = $value;
+                    }
                 }
             }
-        }
 
-        if ($minificationSetting === '1') {
-            foreach ($processQueue as $key => $filesToProcess) {
-                $minifier = new MinificationUtility();
-                $minifier->setMode($type);
+            if ($minificationSetting === '1') {
+                foreach ($processQueue as $key => $filesToProcess) {
+                    $minifier = new MinificationUtility();
+                    $minifier->setMode($type);
 
-                foreach ($filesToProcess as $file) {
-                    $minifier->addFile($file);
+                    foreach ($filesToProcess as $file) {
+                        $minifier->addFile($file);
+                    }
+
+                    $processedFiles[$key] = $minifier->minifyToFile();
                 }
-
-                $processedFiles[$key] = $minifier->minifyToFile();
-            }
-        } else {
-            foreach ($processQueue as $files) {
-                foreach ($files as $key => $file) {
-                    $processedFiles[$key] = $file;
+            } else {
+                foreach ($processQueue as $files) {
+                    foreach ($files as $key => $file) {
+                        $processedFiles[$key] = $file;
+                    }
                 }
             }
         }
