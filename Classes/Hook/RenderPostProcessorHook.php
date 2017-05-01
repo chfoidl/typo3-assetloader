@@ -64,6 +64,17 @@ class RenderPostProcessorHook
     }
 
     /**
+     * Creates minified or concatenated css and js files in temp directory
+     *
+     * @return void
+     */
+    public function createOptimizedAssets()
+    {
+        $this->processFiles('css', $this->settings['includeCSSDeferred.'], $this->settings['concatenateCSS'], $this->settings['minifyCSS']);
+        $this->processFiles('js', $this->settings['includeJSDeferred.'], $this->settings['concatenateJS'], $this->settings['minifyJS']);
+    }
+
+    /**
      * Includes inline css in the head.
      * @return void
      */
