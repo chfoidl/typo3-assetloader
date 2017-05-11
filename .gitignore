@@ -1,4 +1,6 @@
 .Build
 .php_cs.cache
 .idea
+.history
+.vscode
 composer.lock
