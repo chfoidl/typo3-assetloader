@@ -70,8 +70,13 @@ class RenderPostProcessorHook
      */
     public function createOptimizedAssets()
     {
-        $this->processFiles('css', $this->settings['includeCSSDeferred.'], $this->settings['concatenateCSS'], $this->settings['minifyCSS']);
-        $this->processFiles('js', $this->settings['includeJSDeferred.'], $this->settings['concatenateJS'], $this->settings['minifyJS']);
+        if (isset($this->settings['includeCSSDeferred.'])) {
+            $this->processFiles('css', $this->settings['includeCSSDeferred.'], $this->settings['concatenateCSS'], $this->settings['minifyCSS']);
+        }
+
+        if (isset($this->settings['includeJSDeferred.'])) {
+            $this->processFiles('js', $this->settings['includeJSDeferred.'], $this->settings['concatenateJS'], $this->settings['minifyJS']);
+        }
     }
 
     /**
