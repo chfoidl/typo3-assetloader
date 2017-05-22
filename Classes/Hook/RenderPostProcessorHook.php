@@ -130,22 +130,24 @@ class RenderPostProcessorHook
             foreach ($settings as $key => $value) {
                 $rawCss = $this->getSettingContent($settings, $key, $value);
 
-                if ($this->settings['minifyCSS'] === '1') {
-                    $minifier = new MinificationUtility();
-                    $css = $minifier->setMode('css')
-                        ->addContent($rawCss)
-                        ->minifyToString();
-                } else {
-                    $css = $rawCss;
-                }
+                if (!is_array($rawCss)) {
+                    if ($this->settings['minifyCSS'] === '1') {
+                        $minifier = new MinificationUtility();
+                        $css = $minifier->setMode('css')
+                            ->addContent($rawCss)
+                            ->minifyToString();
+                    } else {
+                        $css = $rawCss;
+                    }
 
-                if (!empty($css)) {
-                    $tag = new TagRenderer();
-                    $this->params[$pos][] =
-                        trim($tag->create('style')
-                            ->setContent($css)
-                            ->addAttribute('assetloader-' . $key)
-                            ->renderToString());
+                    if (!empty($css)) {
+                        $tag = new TagRenderer();
+                        $this->params[$pos][] =
+                            trim($tag->create('style')
+                                ->setContent($css)
+                                ->addAttribute('assetloader-' . $key)
+                                ->renderToString());
+                    }
                 }
             }
         }
