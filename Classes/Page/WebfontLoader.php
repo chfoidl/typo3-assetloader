@@ -77,7 +77,7 @@ class WebfontLoader
      */
     public function finishConfig()
     {
-        $this->webfontConfig .= '};';
+        $this->webfontConfig .= 'active: function() { var event = new Event("webFontsLoaded"); window.webFontsLoaded = true; document.dispatchEvent(event); }};';
 
         return $this;
     }
