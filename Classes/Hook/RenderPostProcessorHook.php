@@ -309,7 +309,9 @@ class RenderPostProcessorHook
                     ->setContent($minifier->minifyToString())
                     ->addAttribute('assetloader-webfontloader')
                     ->addAttribute('type', 'text/javascript')
-                    ->renderToString();
+					->renderToString();
+
+			$this->params[self::POSITION_HEAD][] = '<noscript>' . implode('', $this->webfontLoader->getNoscriptLinkTags()) . '</noscript>';
         }
     }
 

@@ -2,12 +2,16 @@
 
 namespace Sethorax\Assetloader\Page;
 
+use Sethorax\Assetloader\Renderer\TagRenderer;
+
 class WebfontLoader
 {
     /**
      * @var string
      */
     protected $webfontConfig;
+
+	protected $noscriptLinkTags = [];
 
     /**
      * Adds the beginning part of the webfontloader config object.
@@ -30,7 +34,13 @@ class WebfontLoader
         $this->webfontConfig .= 'google: { families: [';
 
         foreach ($families as $family) {
-            $familiesArray .= '"' . $family . '",';
+			$familiesArray .= '"' . $family . '",';
+			
+			$tagRenderer = new TagRenderer();
+			$this->noscriptLinkTags[] = $tagRenderer->create('link')
+				->addAttribute('rel', 'stylesheet')
+				->addAttribute('href', 'https://fonts.googleapis.com/css?family=' . $family)
+				->renderToString();
         }
 
         $this->webfontConfig .= substr($familiesArray, 0, strlen($familiesArray) - 1);
@@ -61,7 +71,13 @@ class WebfontLoader
         $this->webfontConfig .= '], urls: [';
 
         foreach ($urls as $url) {
-            $urlsArray .= '"' . $url . '",';
+			$urlsArray .= '"' . $url . '",';
+			
+			$tagRenderer = new TagRenderer();
+			$this->noscriptLinkTags[] = $tagRenderer->create('link')
+				->addAttribute('rel', 'stylesheet')
+				->addAttribute('href', $url)
+				->renderToString();
         }
 
         $this->webfontConfig .= substr($urlsArray, 0, strlen($urlsArray) - 1);
@@ -77,7 +93,7 @@ class WebfontLoader
      */
     public function finishConfig()
     {
-        $this->webfontConfig .= 'active: function() { var event = new Event("webFontsLoaded"); window.webFontsLoaded = true; document.dispatchEvent(event); }};';
+        $this->webfontConfig .= 'active: function() { var event; window.webFontsLoaded = true; if (typeof Event === "function") { event = new Event("webFontsLoaded"); } else { event = document.createEvent("Event"), event.initEvent("webFontsLoaded", true, true); } document.dispatchEvent(event); }};';
 
         return $this;
     }
@@ -103,5 +119,10 @@ class WebfontLoader
     public function getConfig()
     {
         return $this->webfontConfig;
-    }
+	}
+	
+	public function getNoscriptLinkTags()
+	{
+		return $this->noscriptLinkTags;
+	}
 }
